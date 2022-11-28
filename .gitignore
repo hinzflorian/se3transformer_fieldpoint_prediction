@@ -1,0 +1,6 @@
+.vscode
+best_results
+data
+__pycache__/
+ *.pyc
+checkpoints

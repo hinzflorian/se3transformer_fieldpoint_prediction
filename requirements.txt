@@ -1,0 +1,2 @@
+e3nn==0.3.3
+git+https://github.com/NVIDIA/dllogger#egg=dllogger

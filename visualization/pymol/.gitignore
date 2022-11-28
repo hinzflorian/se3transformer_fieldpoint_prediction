@@ -1,0 +1,4 @@
+pymolSamples/*
+!pymolSamples/display.py
+!pymolSamples/usageInstruction
+
