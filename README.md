@@ -29,7 +29,7 @@ conda activate se3_transformer
 conda install zarr
 ```
 
-## increase open file limit:
+## Increase open file limit:
 ```
 ulimit -Sn 30000
 ```
