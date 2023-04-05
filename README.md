@@ -31,3 +31,41 @@ ulimit -Sn 30000
 ```
 python -m runtime.training
 ```
+
+
+## Using Pretrained model
+
+Trained model parameters for all four field point prediction tasks can be found in "checkpoints":
+
+```
+./checkpoints/ckp_hydrophobic
+./checkpoints/ckp_neg
+./checkpoints/ckp_pos
+./checkpoints/ckp_vdw
+```
+
+For example set 
+
+```
+args.load_ckpt_path = pathlib.Path("./checkpoints/ckp_neg")
+```
+
+in ./runtime/training.py to load pretrained models for negative fieldpoints. Also make sure to load corresponding data. For example set
+```
+    args.fieldpoint_type = -5
+```
+to load negative field points.
+
+## Model evaluation
+
+Model evaluation in terms of different metrics:
+
+```
+python -m evaltuation.evaluate_model.py
+```
+
+Generate visualizations:
+
+```
+python -m evaluation.pymol_generation.py
+```

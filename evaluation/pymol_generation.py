@@ -3,13 +3,14 @@ import pathlib
 import torch
 import torch.distributed as dist
 import torch.nn as nn
+from torch.nn.parallel import DistributedDataParallel
+
 ##############################
 from data_loading.molecule_data import FieldPointData
 from model import SE3TransformerMol
 from model.fiber import Fiber
 from runtime.arguments import PARSER
 from runtime.utils import get_local_rank, init_distributed, using_tensor_cores
-from torch.nn.parallel import DistributedDataParallel
 from visualization.visualization import generate_pymol_samples
 
 
@@ -110,7 +111,7 @@ if __name__ == "__main__":
     local_rank = get_local_rank()
     #####################################################################
     # zarrPath="/disk2/sim_project/smilesData/zarrData/Total.zarr"
-    zarrPath = "/home/florian/Data/Total_30122021.zarr"
+    zarrPath = "./data/Total_30122021.zarr"
     number_molecules = args.number_molecules
     number_conformations = 5
     typeFieldpoint = args.fieldpoint_type

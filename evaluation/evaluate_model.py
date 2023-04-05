@@ -4,10 +4,13 @@ import pathlib
 import torch
 import torch.distributed as dist
 import torch.nn as nn
+from dllogger import flush
+from torch.nn.parallel import DistributedDataParallel
+from torch.utils.data import DataLoader
 
 ##############################
 from data_loading.molecule_data import FieldPointData, collate
-from dllogger import flush
+from evaluation.evaluate import evaluate
 from model import SE3TransformerMol
 from model.fiber import Fiber
 from runtime.arguments import PARSER
@@ -15,10 +18,6 @@ from runtime.callbacks import MoleculeLRSchedulerCallback
 from runtime.clustering import *
 from runtime.loggers import DLLogger, Logger, LoggerCollection
 from runtime.utils import get_local_rank, init_distributed, using_tensor_cores
-from torch.nn.parallel import DistributedDataParallel
-from torch.utils.data import DataLoader
-
-from evaluation.evaluate import evaluate
 
 ##############################
 
@@ -169,7 +168,7 @@ if __name__ == "__main__":
     logger = LoggerCollection(loggers)
     #####################################################################
     # zarrPath="/disk2/sim_project/smilesData/zarrData/Total.zarr"
-    zarrPath = "/home/florian/Data/Total_30122021.zarr"
+    zarrPath = "./data/Total_30122021.zarr"
     number_conformations = 5
     data = FieldPointData(
         args.descriptors_to_use,

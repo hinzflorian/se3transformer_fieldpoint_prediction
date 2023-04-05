@@ -8,24 +8,24 @@ import torch
 import torch.distributed as dist
 import torch.nn as nn
 from apex.optimizers import FusedAdam, FusedLAMB
-
-#############################################################################################################
-from data_loading.molecule_data import FieldPointData, collate
 from dllogger import flush
-from evaluation.evaluate import evaluate
-from loss.loss_functions import apply_loss
-from model import SE3TransformerMol
-from model.fiber import Fiber
 from torch.nn.modules.loss import _Loss
 from torch.nn.parallel import DistributedDataParallel
 from torch.optim import Optimizer
 from torch.utils.data import DataLoader, DistributedSampler
 from tqdm import tqdm
 
+#############################################################################################################
+from data_loading.molecule_data import FieldPointData, collate
+from evaluation.evaluate import evaluate
+from loss.loss_functions import apply_loss
+from model import SE3TransformerMol
+from model.fiber import Fiber
 from runtime.arguments import PARSER
 from runtime.callbacks import BaseCallback, MoleculeLRSchedulerCallback
 from runtime.loggers import DLLogger, Logger, LoggerCollection
-from runtime.utils import get_local_rank, init_distributed, to_cuda, using_tensor_cores
+from runtime.utils import (get_local_rank, init_distributed, to_cuda,
+                           using_tensor_cores)
 
 
 #############################################################################################################
@@ -299,7 +299,8 @@ if __name__ == "__main__":
     args.save_ckpt_path = pathlib.Path(
         "./checkpoints/ckp_neg2"
     )  # file to save checkpoint
-    args.load_ckpt_path = pathlib.Path("./checkpoints/ckp_neg")  # loading checkpoint
+    # loading checkpoint for negative fieldpoint:
+    args.load_ckpt_path = pathlib.Path("./checkpoints/ckp_neg")  
     # args.load_ckpt_path = None
     # fieldpoint type to load (-5: electrostatic negative, -6: electrostatic positive
     # , -7: vdw, -8: hydrophobic):
@@ -351,7 +352,7 @@ if __name__ == "__main__":
     ############################################################################################
     # Loading Data
     ############################################################################################
-    zarrPath = "data/Total_30122021.zarr"  # data location
+    zarrPath = "./data/Total_30122021.zarr"  # data location
     data = FieldPointData(
         args.descriptors_to_use,
         zarrPath,
