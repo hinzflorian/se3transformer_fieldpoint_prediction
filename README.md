@@ -7,7 +7,7 @@
 wget https://drive.switch.ch/index.php/s/HKjnWZqU25mBc1k/download -O ./data/moleucle_data.zip
 unzip ./data/moleucle_data.zip -d ./data/
 ```
-## Installing and starting docker environment
+## Installing 
 The easiest way is to run the code within a docker environment:
 
 ```
