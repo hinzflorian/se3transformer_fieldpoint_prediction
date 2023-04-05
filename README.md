@@ -14,7 +14,7 @@ The easiest way is to run the code within a docker environment:
 docker build -t se3-transformer .
 docker run --gpus all --privileged -it --runtime=nvidia --shm-size=8g --ulimit memlock=-1 --ulimit stack=67108864 --rm -v ${PWD}/ se3-transformer:latest
 ```
-In case you prefer to install the dependencies yourself, you find full package requirements in
+In case you prefer to install the dependencies yourself, the full package requirements are given in
 ```
 ./environment.yml
 ./requirements.txt
