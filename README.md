@@ -57,14 +57,14 @@ For example set
 args.load_ckpt_path = pathlib.Path("./checkpoints/ckp_neg")
 ```
 
-in ./runtime/training.py to load pretrained models for negative fieldpoints. Also make sure to load corresponding data. For example set
+in ./runtime/training.py to load pretrained models for negative fieldpoints. Also make sure to load corresponding data. Set 
 ```
 args.fieldpoint_type = -5 #for negative field points
 args.fieldpoint_type = -6 #for positive field points
 args.fieldpoint_type = -7 #for van der Waals field points
 args.fieldpoint_type = -8 #for hydrophobic field points
 ```
-to load negative field points.
+to load the corresponding field points.
 
 ## Model evaluation
 
