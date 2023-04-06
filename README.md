@@ -40,7 +40,7 @@ python -m runtime.training
 ```
 
 
-## Using Pretrained model
+## Using pretrained model
 
 Trained model parameters for all four field point prediction tasks can be found in "checkpoints":
 
